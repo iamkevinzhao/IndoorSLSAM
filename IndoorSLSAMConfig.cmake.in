@@ -14,3 +14,5 @@ include("${IndoorSLSAM_CMAKE_DIR}/IndoorSLSAMTargets.cmake")
 # These are IMPORTED targets created by IndoorSLSAMTargets.cmake
 set(IndoorSLSAM_LIBRARIES IndoorSLSAM)
 set(IndoorSLSAM_EXECUTABLE IndoorSLSAM_test)
+
+include_directories(${IndoorSLSAM_INCLUDE_DIRS})
