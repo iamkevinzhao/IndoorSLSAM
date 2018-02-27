@@ -1,9 +1,25 @@
 configure_file(config.h.in "${CMAKE_CURRENT_BINARY_DIR}/config.h" @ONLY)
 
-add_library(IndoorSLSAM SHARED slsam.cpp slsam.h config.h.in)
+add_library(
+  IndoorSLSAM
+    SHARED
+      slsam.cpp
+      slsam.h
+      config.h.in
+
+      # sensor
+      sensor/scan2d.h
+      sensor/scan2d.cpp
+)
+
+set(
+  PUBLIC_HEADER_FILES
+    slsam.h
+    sensor/scan2d.h
+)
 
 set_target_properties(IndoorSLSAM PROPERTIES
-  PUBLIC_HEADER "slsam.h;${CMAKE_CURRENT_BINARY_DIR}/config.h")
+  PUBLIC_HEADER "${PUBLIC_HEADER_FILES};${CMAKE_CURRENT_BINARY_DIR}/config.h")
 
 install(TARGETS IndoorSLSAM
   # IMPORTANT: Add the IndoorSLSAM library to the "export-set"

@@ -16,3 +16,6 @@ set(IndoorSLSAM_LIBRARIES IndoorSLSAM)
 set(IndoorSLSAM_EXECUTABLE IndoorSLSAM_test)
 
 include_directories(${IndoorSLSAM_INCLUDE_DIRS})
+
+find_package(PCL REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})

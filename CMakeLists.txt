@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(IndoorSLSAM CXX)
 
+add_compile_options(-std=c++11)
+
+find_package(PCL REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
 set(IndoorSLSAM_MAJOR_VERSION 0)
 set(IndoorSLSAM_MINOR_VERSION 1)
 set(IndoorSLSAM_PATCH_VERSION 0)
