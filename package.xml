@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>IndoorSLSAM</name>
+  <version>0.0.0</version>
+  <description>NA</description>
+  <maintainer email="codincodee@outlook.com">codincodee</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>
