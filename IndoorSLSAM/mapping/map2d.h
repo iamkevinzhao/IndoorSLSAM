@@ -7,8 +7,20 @@ namespace slsam {
 using MapMatrix = Eigen::MatrixXf;
 struct Map2D {
   /**
-   * @brief map.rows() returns the width of the map
-   *        map.cols() return the height of the map
+   * @brief The underlying map
+   *            y
+   *            ^
+   *            |
+   *            |
+   *       *****|*****
+   *       *****|*****
+   *  ---------------------->x
+   *       *****|*****
+   *            |
+   *            |
+   *            |
+   * The width of the above map is 10
+   * The height of the above map is 3
    */
   MapMatrix map;
   /**

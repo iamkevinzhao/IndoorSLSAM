@@ -5,18 +5,21 @@
 using namespace std;
 
 namespace slsam {
+bool Slsam::Init() {
+  map_generator_.reset(new MapGenerator);
+}
+
 void Slsam::AddScan(std::shared_ptr<Scan2D> scan) {
   scan_ = scan;
 }
 
 std::shared_ptr<Map2D> Slsam::GenerateMap() {
+  if (!scan_) {
+    return std::shared_ptr<Map2D>();
+  }
   shared_ptr<Map2D> map(new Map2D);
-  int width = 10, height = 20;
-  map->map.resize(width, height);
-  for (int w = 0; w < width; ++w) {
-    for (int h = 0; h < height; ++h) {
-      map->map(w, h) = 0.5f;
-    }
+  if (!map_generator_->AddCloudToMap(scan_->points, *map)) {
+    return std::shared_ptr<Map2D>();
   }
   return map;
 }

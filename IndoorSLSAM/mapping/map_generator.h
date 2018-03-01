@@ -8,11 +8,34 @@ namespace slsam {
 class MapGenerator {
  public:
   MapGenerator();
-  void SetResolution(const float& resolution) {
+  inline void SetResolution(const float& resolution) {
     resolution_ = resolution;
   }
-  void AddCloudToMap(const PointCloud2& cloud, Map2D& map);
+  bool AddCloudToMap(const PointCloud2& cloud, Map2D& map);
  private:
+  /**
+   * @brief GetMapBoundary
+   *            y
+   *            ^
+   *            |
+   *            |
+   *       *****|****+
+   *       *****|*****
+   *  ---------------------->x
+   *       -****|*****
+   *            |
+   *            |
+   *            |
+   * @param cloud The point cloud
+   * @param top_right Cartesian coordinate of the top-right corner
+   *        (denoted as "+" above)
+   * @param bottom_left Cartesian coordinate of the bottom-down corner
+   *        (denoted as "-" above)
+   */
+  static void GetMapBoundary(
+      const PointCloud2& cloud, Point2& top_right, Point2& bottom_left);
+  static bool IsTopRightBottomLeftValid(
+      const Point2& top_right, const Point2& bottom_left);
   float resolution_;
 };
 } // namespace slsam

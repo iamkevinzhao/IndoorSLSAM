@@ -18,6 +18,15 @@ add_library(
       mapping/map2d.cpp
       mapping/map_generator.h
       mapping/map_generator.cpp
+
+      # utility
+      utility/utilities.h
+      utility/utilities.cpp
+)
+
+target_link_libraries(
+  IndoorSLSAM
+    ${PCL_LIBRARIES}
 )
 
 set(
