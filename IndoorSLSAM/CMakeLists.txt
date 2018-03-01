@@ -10,6 +10,10 @@ add_library(
       # sensor
       sensor/scan2d.h
       sensor/scan2d.cpp
+
+      # geometry
+      geometry/map2d.h
+      geometry/map2d.cpp
 )
 
 set(

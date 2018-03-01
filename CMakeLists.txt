@@ -3,10 +3,12 @@ project(IndoorSLSAM CXX)
 
 add_compile_options(-std=c++11)
 
-find_package(PCL REQUIRED)
+find_package(PCL REQUIRED COMPONENTS common)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
+
+find_package(Eigen3 REQUIRED NO_MODULE)
 
 set(IndoorSLSAM_MAJOR_VERSION 0)
 set(IndoorSLSAM_MINOR_VERSION 1)
