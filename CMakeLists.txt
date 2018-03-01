@@ -44,6 +44,8 @@ include_directories(
 
 # Add sub-directories
 add_subdirectory(IndoorSLSAM)
+#include_directories(IndoorSLSAM)
+
 add_subdirectory(IndoorSLSAM_test)
 
 # The interesting stuff goes here

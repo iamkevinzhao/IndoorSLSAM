@@ -7,19 +7,28 @@ add_library(
       slsam.h
       config.h.in
 
-      # sensor
-      sensor/scan2d.h
-      sensor/scan2d.cpp
+      # perception
+      perception/scan2d.h
+      perception/scan2d.cpp
+      perception/point_cloud2.h
+      perception/point_cloud2.cpp
 
-      # geometry
-      geometry/map2d.h
-      geometry/map2d.cpp
+      # mapping
+      mapping/map2d.h
+      mapping/map2d.cpp
+      mapping/map_generator.h
+      mapping/map_generator.cpp
 )
 
 set(
   PUBLIC_HEADER_FILES
     slsam.h
-    sensor/scan2d.h
+
+    # perception
+    perception/scan2d.h
+
+    # mapping
+    mapping/map2d.h
 )
 
 set_target_properties(IndoorSLSAM PROPERTIES

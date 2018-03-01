@@ -3,9 +3,9 @@
 #define INDOORSLSAM_SLSAM_H
 
 #include <IndoorSLSAM/config.h>
-#include "sensor/scan2d.h"
+#include "perception/scan2d.h"
 #include <memory>
-#include "geometry/map2d.h"
+#include "mapping/map2d.h"
 
 namespace slsam {
 class Slsam {
