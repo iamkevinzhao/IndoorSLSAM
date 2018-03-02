@@ -33,18 +33,23 @@ bool MapGenerator::AddCloudToMap(const PointCloud2 &cloud, Map2D &map) {
       cloud_map_top_right, cloud_map_bottom_left,
       map_top_right, map_bottom_left);
 
-  int width, height;
-  width = ceil(map_top_right.x - map_bottom_left.x) / resolution_;
-  height = ceil((map_top_right.y - map_bottom_left.y) / resolution_);
+  int p_width = std::ceil(map_top_right.x - map.origin.x) / resolution_;
+  int p_height = std::ceil((map_top_right.y - map.origin.y) / resolution_);
+  int n_width = std::ceil((map.origin.x - map_bottom_left.x) / resolution_);
+  int n_height = std::ceil((map.origin.y - map_bottom_left.y) / resolution_);
+
+  map.origin =
+      Point2{
+          map.origin.x - n_width * resolution_,
+          map.origin.y - n_height * resolution_};
+
+  int width = p_width + n_width, height = p_height + n_height;
   if (width <= 0 || height <= 0) {
     uerror(__FILE__, __LINE__, "Invalid width or height");
     return false;
   }
-  // map.map.resize(width, height);
   map.map.setConstant(width, height, kMapCellProbMin);
-
   map.resolution = resolution_;
-  map.origin = map_bottom_left; // Notice!
 
   int ix, iy;
   // Add cloud to the map
