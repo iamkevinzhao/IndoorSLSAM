@@ -26,6 +26,8 @@ bool MapGenerator::AddCloudToMap(const PointCloud2 &cloud, Map2D &map) {
       map.map(w, h) = 0.5;
     }
   }
+  map.resolution = resolution_;
+  map.origin = bottom_left;
   return true;
 }
 
