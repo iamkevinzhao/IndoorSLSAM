@@ -17,7 +17,7 @@ std::shared_ptr<Map2D> Slsam::GenerateMap() {
   if (!scan_) {
     return std::shared_ptr<Map2D>();
   }
-  shared_ptr<Map2D> map(new Map2D);
+  static shared_ptr<Map2D> map(new Map2D);
   map->resolution = 0.05f;
   if (!map_generator_->AddCloudToMap(scan_->points, *map)) {
     return std::shared_ptr<Map2D>();

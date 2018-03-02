@@ -7,7 +7,7 @@
 using namespace std;
 
 namespace slsam {
-MapGenerator::MapGenerator() : resolution_(0.05f), prob_per_point_(0.1) {}
+MapGenerator::MapGenerator() : resolution_(0.05f), prob_per_point_(0.5) {}
 bool MapGenerator::AddCloudToMap(const PointCloud2 &cloud, Map2D &map) {
   if (cloud.empty()) {
     return true;
@@ -33,15 +33,16 @@ bool MapGenerator::AddCloudToMap(const PointCloud2 &cloud, Map2D &map) {
       cloud_map_top_right, cloud_map_bottom_left,
       map_top_right, map_bottom_left);
 
-  int p_width = std::ceil(map_top_right.x - map.origin.x) / resolution_;
+  int p_width = std::ceil((map_top_right.x - map.origin.x) / resolution_);
   int p_height = std::ceil((map_top_right.y - map.origin.y) / resolution_);
   int n_width = std::ceil((map.origin.x - map_bottom_left.x) / resolution_);
   int n_height = std::ceil((map.origin.y - map_bottom_left.y) / resolution_);
 
+  auto original_map = map;
   map.origin =
       Point2{
-          map.origin.x - n_width * resolution_,
-          map.origin.y - n_height * resolution_};
+          original_map.origin.x - n_width * resolution_,
+          original_map.origin.y - n_height * resolution_};
 
   int width = p_width + n_width, height = p_height + n_height;
   if (width <= 0 || height <= 0) {
@@ -63,7 +64,14 @@ bool MapGenerator::AddCloudToMap(const PointCloud2 &cloud, Map2D &map) {
   }
 
   // Add original map to the map
-
+  for (int w = 0; w < original_map.iw(); ++w) {
+    for (int h = 0; h < original_map.ih(); ++h) {
+      map.map(w + n_width, h + n_height) += original_map.map(w, h);
+      if (map.map(ix, iy) > kMapCellProbMax) {
+        map.map(ix, iy) = kMapCellProbMax;
+      }
+    }
+  }
   return true;
 }
 
