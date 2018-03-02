@@ -1,6 +1,8 @@
 #include "map_generator.h"
 #include <limits>
 #include <cmath>
+#include <iostream>
+#include "IndoorSLSAM/utility/utilities.h"
 
 using namespace std;
 
@@ -8,11 +10,16 @@ namespace slsam {
 MapGenerator::MapGenerator() : resolution_(0.5f) {}
 bool MapGenerator::AddCloudToMap(const PointCloud2 &cloud, Map2D &map) {
   if (cloud.empty()) {
+    return true;
+  }
+  if (map.resolution != resolution_) {
+    uerror(__FILE__, __LINE__, "Resolution not matched.");
     return false;
   }
   Point2 top_right, bottom_left;
   GetMapBoundary(cloud, top_right, bottom_left);
   if (!IsTopRightBottomLeftValid(top_right, bottom_left)) {
+    uerror(__FILE__, __LINE__, "Invalid boundary extraction.");
     return false;
   }
   float width, height;
