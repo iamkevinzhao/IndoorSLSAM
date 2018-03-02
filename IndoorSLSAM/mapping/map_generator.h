@@ -36,7 +36,12 @@ class MapGenerator {
       const PointCloud2& cloud, Point2& top_right, Point2& bottom_left);
   static bool IsTopRightBottomLeftValid(
       const Point2& top_right, const Point2& bottom_left);
+  static void MergeMapBoundaries(
+      const Point2& bound1_top_right, const Point2& bound1_bottom_left,
+      const Point2& bound2_top_right, const Point2& bound2_bottom_left,
+      Point2& bound_top_right, Point2& bound_bottom_left);
   float resolution_;
+  float prob_per_point_;
 };
 } // namespace slsam
 

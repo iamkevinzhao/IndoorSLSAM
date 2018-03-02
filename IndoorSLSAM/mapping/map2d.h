@@ -6,6 +6,8 @@
 
 namespace slsam {
 using MapMatrix = Eigen::MatrixXf;
+constexpr float kMapCellProbMax = 1.0f;
+constexpr float kMapCellProbMin = 0.0f;
 struct Map2D {
   /**
    * @brief Map2D constructor
@@ -43,8 +45,14 @@ struct Map2D {
     return map.cols();
   }
   /**
-   * @brief The Cartesian coordinate (in meters) of the bottom-left pixel
-   *        (as indicated by "o")
+   * @brief The Cartesian coordinate (in meters) of the center
+   *        of each bottom-left pixel (as indicated by "o")
+   *        *****
+   *        *****
+   *        **o**
+   *        *****
+   *        *****
+   *        pixel
    */
   Point2 origin;
   /**
