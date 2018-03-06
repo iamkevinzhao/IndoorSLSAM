@@ -26,6 +26,8 @@ add_library(
       # utility
       utility/utilities.h
       utility/utilities.cpp
+      utility/time.h
+      utility/time.cpp
 )
 
 target_link_libraries(
@@ -42,6 +44,9 @@ set(
 
     # mapping
     mapping/map2d.h
+
+    # utility
+    utility/time.h
 )
 
 set_target_properties(IndoorSLSAM PROPERTIES

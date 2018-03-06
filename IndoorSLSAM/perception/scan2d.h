@@ -3,9 +3,11 @@
 
 #include <vector>
 #include "point_cloud2.h"
+#include "IndoorSLSAM/utility/time.h"
 
 namespace slsam {
 struct Scan2D {
+  Time stamp;
   float angle_min; // start angle of the scan [rad]
   float angle_max; // end angle of the scan [rad]
   float angle_increment; // angular distance between measurements [rad]

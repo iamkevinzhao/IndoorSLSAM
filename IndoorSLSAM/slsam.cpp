@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Eigen/Dense>
 #include "perception/scan_processor.h"
+#include "utility/time.h"
 
 using namespace std;
 
