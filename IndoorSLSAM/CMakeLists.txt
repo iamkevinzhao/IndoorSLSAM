@@ -12,6 +12,8 @@ add_library(
       perception/scan2d.cpp
       perception/point_cloud2.h
       perception/point_cloud2.cpp
+      perception/scan_processor.h
+      perception/scan_processor.cpp
 
       # mapping
       mapping/map2d.h
