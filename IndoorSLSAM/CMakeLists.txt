@@ -20,6 +20,8 @@ add_library(
       mapping/map2d.cpp
       mapping/map_generator.h
       mapping/map_generator.cpp
+      mapping/transform.h
+      mapping/transform.cpp
 
       # utility
       utility/utilities.h

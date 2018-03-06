@@ -32,4 +32,10 @@ std::shared_ptr<Map2D> Slsam::GenerateMap() {
   }
   return map;
 }
+
+bool Slsam::GetPose(Translation2 &translation, Rotation2 &rotation) {
+  translation = Translation2{0.0f, 0.0f};
+  rotation = Rotation2(0);
+  return true;
+}
 } // namespace slsam
