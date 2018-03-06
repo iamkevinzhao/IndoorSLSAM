@@ -11,6 +11,9 @@ class MapGenerator {
   inline void SetResolution(const float& resolution) {
     resolution_ = resolution;
   }
+  inline float GetResolution() const {
+    return resolution_;
+  }
   bool AddCloudToMap(const PointCloud2& cloud, Map2D& map);
  private:
   /**
