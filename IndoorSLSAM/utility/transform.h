@@ -1,5 +1,5 @@
-#ifndef INDOORSLSAM_MAPPING_TRANSFORM_H_
-#define INDOORSLSAM_MAPPING_TRANSFORM_H_
+#ifndef INDOORSLSAM_UTILITY_TRANSFORM_H_
+#define INDOORSLSAM_UTILITY_TRANSFORM_H_
 
 #include <Eigen/Dense>
 
@@ -8,4 +8,4 @@ using Translation2 = Eigen::Translation2f;
 using Rotation2 = Eigen::Rotation2Df;
 } // namespace slsam
 
-#endif // INDOORSLSAM_MAPPING_TRANSFORM_H_
+#endif // INDOORSLSAM_UTILITY_TRANSFORM_H_

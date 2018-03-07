@@ -20,14 +20,18 @@ add_library(
       mapping/map2d.cpp
       mapping/map_generator.h
       mapping/map_generator.cpp
-      mapping/transform.h
-      mapping/transform.cpp
+
+      # localization
+      localization/odom2d.h
+      localization/odom2d.cpp
 
       # utility
       utility/utilities.h
       utility/utilities.cpp
       utility/time.h
       utility/time.cpp
+      utility/transform.h
+      utility/transform.cpp
 )
 
 target_link_libraries(
@@ -45,8 +49,12 @@ set(
     # mapping
     mapping/map2d.h
 
+    # localization
+    localization/odom2d.h
+
     # utility
     utility/time.h
+    utility/transform.h
 )
 
 set_target_properties(IndoorSLSAM PROPERTIES

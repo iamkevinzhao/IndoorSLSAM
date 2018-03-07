@@ -7,7 +7,8 @@
 #include <memory>
 #include "mapping/map2d.h"
 #include "mapping/map_generator.h"
-#include "mapping/transform.h"
+#include "utility/transform.h"
+#include "localization/odom2d.h"
 
 namespace slsam {
 class Slsam {
