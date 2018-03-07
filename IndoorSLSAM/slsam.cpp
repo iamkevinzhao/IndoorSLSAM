@@ -15,6 +15,10 @@ void Slsam::AddScan(std::shared_ptr<Scan2D> scan) {
   scan_ = scan;
 }
 
+void Slsam::AddOdom(std::shared_ptr<Odom2D> odom) {
+  odom_ = odom;
+}
+
 std::shared_ptr<Map2D> Slsam::GenerateMap() {
   if (!scan_) {
     return std::shared_ptr<Map2D>();
@@ -35,8 +39,11 @@ std::shared_ptr<Map2D> Slsam::GenerateMap() {
 }
 
 bool Slsam::GetPose(Translation2 &translation, Rotation2 &rotation) {
-  translation = Translation2{0.0f, 0.0f};
-  rotation = Rotation2(0);
+  if (!odom_) {
+    return false;
+  }
+  translation = odom_->position;
+  rotation = odom_->heading;
   return true;
 }
 } // namespace slsam

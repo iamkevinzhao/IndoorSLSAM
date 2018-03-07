@@ -15,10 +15,12 @@ class Slsam {
  public:
   bool Init();
   void AddScan(std::shared_ptr<Scan2D> scan);
+  void AddOdom(std::shared_ptr<Odom2D> odom);
   std::shared_ptr<Map2D> GenerateMap();
   bool GetPose(Translation2& translation, Rotation2& rotation);
  private:
   std::shared_ptr<Scan2D> scan_;
+  std::shared_ptr<Odom2D> odom_;
   std::shared_ptr<MapGenerator> map_generator_;
 };
 } // namespace slsam
