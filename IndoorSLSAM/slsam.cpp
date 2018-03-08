@@ -33,8 +33,10 @@ std::shared_ptr<Map2D> Slsam::GenerateMap() {
     return std::shared_ptr<Map2D>();
   }
   for (auto& point : *cloud) {
-    point.x = point.x + odom_->position.x();
-    point.y = point.y + odom_->position.y();
+    Translation2 p{point.x, point.y};
+    Eigen::Transform<float, 2, 1> trans = odom_->heading * p;
+    point.x = trans.translation().x() + odom_->position.x();
+    point.y = trans.translation().y() + odom_->position.y();
   }
   if (!map_generator_->AddCloudToMap(*cloud, *map)) {
     return std::shared_ptr<Map2D>();
