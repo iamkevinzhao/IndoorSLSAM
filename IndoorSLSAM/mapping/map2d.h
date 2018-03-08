@@ -8,6 +8,10 @@ namespace slsam {
 using MapMatrix = Eigen::MatrixXf;
 constexpr float kMapCellProbMax = 1.0f;
 constexpr float kMapCellProbMin = 0.0f;
+/**
+ * @brief 2D Occupancy Grid Map
+ * For specifications, the Map2D align with ROS nav_msgs::OccupancyGrid
+ */
 struct Map2D {
   /**
    * @brief Map2D constructor
@@ -49,9 +53,9 @@ struct Map2D {
    *        of each bottom-left pixel (as indicated by "o")
    *        *****
    *        *****
-   *        **o**
    *        *****
    *        *****
+   *        o****
    *        pixel
    */
   Point2 origin;

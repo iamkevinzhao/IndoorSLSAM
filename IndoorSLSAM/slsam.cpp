@@ -32,6 +32,10 @@ std::shared_ptr<Map2D> Slsam::GenerateMap() {
   if (!cloud) {
     return std::shared_ptr<Map2D>();
   }
+  for (auto& point : *cloud) {
+    point.x = point.x + odom_->position.x();
+    point.y = point.y + odom_->position.y();
+  }
   if (!map_generator_->AddCloudToMap(*cloud, *map)) {
     return std::shared_ptr<Map2D>();
   }
@@ -44,6 +48,8 @@ bool Slsam::GetPose(Translation2 &translation, Rotation2 &rotation) {
   }
   translation = odom_->position;
   rotation = odom_->heading;
+//  translation = Translation2{0.0f, 0.0f};
+//  rotation = Rotation2(0.0f);
   return true;
 }
 } // namespace slsam

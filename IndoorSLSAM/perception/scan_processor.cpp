@@ -20,7 +20,7 @@ shared_ptr<PointCloud2> ScanProcessor::Scan2ToCloud2(const Scan2D &scan) {
       continue;
     }
     angle = angle_min + angle_increment * i;
-    cloud->push_back({range * std::sin(angle), range * std::cos(angle)});
+    cloud->push_back({range * std::cos(angle), range * std::sin(angle)});
   }
   return cloud;
 }

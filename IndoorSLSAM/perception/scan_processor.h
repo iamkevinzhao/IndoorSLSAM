@@ -12,20 +12,6 @@ public:
   ScanProcessor();
   /**
    * @brief Convert Scan2D to PointCloud2
-   *            y
-   *            ^
-   *            |   *
-   *            |  .|
-   *            |^. |
-   *            |.  |
-   *  ---------------------->x
-   *            |
-   *            |
-   *            |
-   *            |
-   * "...": the beam channel of the scan
-   * "^": the angle (in radius) of the beam
-   * "*": the end point of the beam
    * @param scan The laser scan
    * @return A shared pointer to the generated 2D point cloud
    *         The pointer is guarenteed not null

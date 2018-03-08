@@ -6,6 +6,26 @@
 #include "IndoorSLSAM/utility/time.h"
 
 namespace slsam {
+/**
+ * @brief 2D Laser Scan
+ * For specifications, Scan2D align with ROS sensor_msgs::LaserScan
+   *            y
+   *            ^
+   *            |   *
+   *            |  .|
+   *            | . |
+   *            |.@ |
+   *  ---------------------->x
+   *            |
+   *            |
+   *            |
+   *            |
+   * "...": the beam channel of the scan
+   * "@": the angle (in radius) of the beam.
+   *      When angle is 0, the beam is on the X axis.
+   *      When angle is Pi/2, the beam is on the Y axis.
+   * "*": the end point of the beam
+ */
 struct Scan2D {
   Time stamp;
   float angle_min; // start angle of the scan [rad]
